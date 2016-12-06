@@ -1,0 +1,412 @@
+{
+    "states": [
+        {
+            "name": "california",
+            "population": 38332521,
+            "seats": {
+                "senate": 2,
+                "house": 53
+            }
+        },
+        {
+            "name": "texas",
+            "population": 26448193,
+            "seats": {
+                "senate": 2,
+                "house": 36
+            }
+        },
+        {
+            "name": "new york",
+            "population": 19651127,
+            "seats": {
+                "senate": 2,
+                "house": 27
+            }
+        },
+        {
+            "name": "florida",
+            "population": 19552860,
+            "seats": {
+                "senate": 2,
+                "house": 27
+            }
+        },
+        {
+            "name": "illinois",
+            "population": 12882135,
+            "seats": {
+                "senate": 2,
+                "house": 18
+            }
+        },
+        {
+            "name": "pennsylvania",
+            "population": 12773801,
+            "seats": {
+                "senate": 2,
+                "house": 18
+            }
+        },
+        {
+            "name": "ohio",
+            "population": 11570808,
+            "seats": {
+                "senate": 2,
+                "house": 16
+            }
+        },
+        {
+            "name": "georgia",
+            "population": 9992167,
+            "seats": {
+                "senate": 2,
+                "house": 14
+            }
+        },
+        {
+            "name": "michigan",
+            "population": 9895622,
+            "seats": {
+                "senate": 2,
+                "house": 14
+            }
+        },
+        {
+            "name": "north carolina",
+            "population": 9848060,
+            "seats": {
+                "senate": 2,
+                "house": 13
+            }
+        },
+        {
+            "name": "new jersey",
+            "population": 8899339,
+            "seats": {
+                "senate": 2,
+                "house": 12
+            }
+        },
+        {
+            "name": "virginia",
+            "population": 8260405,
+            "seats": {
+                "senate": 2,
+                "house": 11
+            }
+        },
+        {
+            "name": "washington",
+            "population": 6971406,
+            "seats": {
+                "senate": 2,
+                "house": 10
+            }
+        },
+        {
+            "name": "massachusetts",
+            "population": 6692824,
+            "seats": {
+                "senate": 2,
+                "house": 9
+            }
+        },
+        {
+            "name": "arizona",
+            "population": 6626624,
+            "seats": {
+                "senate": 2,
+                "house": 9
+            }
+        },
+        {
+            "name": "indiana",
+            "population": 6570902,
+            "seats": {
+                "senate": 2,
+                "house": 9
+            }
+        },
+        {
+            "name": "tennessee",
+            "population": 6495978,
+            "seats": {
+                "senate": 2,
+                "house": 9
+            }
+        },
+        {
+            "name": "missouri",
+            "population": 6044171,
+            "seats": {
+                "senate": 2,
+                "house": 8
+            }
+        },
+        {
+            "name": "maryland",
+            "population": 5928814,
+            "seats": {
+                "senate": 2,
+                "house": 8
+            }
+        },
+        {
+            "name": "wisconsin",
+            "population": 5742713,
+            "seats": {
+                "senate": 2,
+                "house": 8
+            }
+        },
+        {
+            "name": "minnesota",
+            "population": 5420380,
+            "seats": {
+                "senate": 2,
+                "house": 8
+            }
+        },
+        {
+            "name": "colorado",
+            "population": 5268367,
+            "seats": {
+                "senate": 2,
+                "house": 7
+            }
+        },
+        {
+            "name": "alabama",
+            "population": 4833722,
+            "seats": {
+                "senate": 2,
+                "house": 7
+            }
+        },
+        {
+            "name": "south carolina",
+            "population": 4774839,
+            "seats": {
+                "senate": 2,
+                "house": 7
+            }
+        },
+        {
+            "name": "louisiana",
+            "population": 4625470,
+            "seats": {
+                "senate": 2,
+                "house": 6
+            }
+        },
+        {
+            "name": "kentucky",
+            "population": 4395295,
+            "seats": {
+                "senate": 2,
+                "house": 6
+            }
+        },
+        {
+            "name": "oregon",
+            "population": 3930065,
+            "seats": {
+                "senate": 2,
+                "house": 5
+            }
+        },
+        {
+            "name": "oklahoma",
+            "population": 3850568,
+            "seats": {
+                "senate": 2,
+                "house": 5
+            }
+        },
+        {
+            "name": "connecticut",
+            "population": 3596080,
+            "seats": {
+                "senate": 2,
+                "house": 5
+            }
+        },
+        {
+            "name": "iowa",
+            "population": 3090416,
+            "seats": {
+                "senate": 2,
+                "house": 4
+            }
+        },
+        {
+            "name": "mississippi",
+            "population": 2991207,
+            "seats": {
+                "senate": 2,
+                "house": 4
+            }
+        },
+        {
+            "name": "arkansas",
+            "population": 2959373,
+            "seats": {
+                "senate": 2,
+                "house": 4
+            }
+        },
+        {
+            "name": "utah",
+            "population": 2900872,
+            "seats": {
+                "senate": 2,
+                "house": 4
+            }
+        },
+        {
+            "name": "kansas",
+            "population": 2893957,
+            "seats": {
+                "senate": 2,
+                "house": 4
+            }
+        },
+        {
+            "name": "nevada",
+            "population": 2790136,
+            "seats": {
+                "senate": 2,
+                "house": 4
+            }
+        },
+        {
+            "name": "new mexico",
+            "population": 2085287,
+            "seats": {
+                "senate": 2,
+                "house": 3
+            }
+        },
+        {
+            "name": "nebraska",
+            "population": 1868516,
+            "seats": {
+                "senate": 2,
+                "house": 3
+            }
+        },
+        {
+            "name": "west virginia",
+            "population": 1854304,
+            "seats": {
+                "senate": 2,
+                "house": 3
+            }
+        },
+        {
+            "name": "idaho",
+            "population": 1612136,
+            "seats": {
+                "senate": 2,
+                "house": 2
+            }
+        },
+        {
+            "name": "hawaii",
+            "population": 1404054,
+            "seats": {
+                "senate": 2,
+                "house": 2
+            }
+        },
+        {
+            "name": "maine",
+            "population": 1328302,
+            "seats": {
+                "senate": 2,
+                "house": 2
+            }
+        },
+        {
+            "name": "new hampshire",
+            "population": 1323459,
+            "seats": {
+                "senate": 2,
+                "house": 2
+            }
+        },
+        {
+            "name": "rhode island",
+            "population": 1051511,
+            "seats": {
+                "senate": 2,
+                "house": 2
+            }
+        },
+        {
+            "name": "montana",
+            "population": 1015165,
+            "seats": {
+                "senate": 2,
+                "house": 1
+            }
+        },
+        {
+            "name": "delaware",
+            "population": 925749,
+            "seats": {
+                "senate": 2,
+                "house": 1
+            }
+        },
+        {
+            "name": "south dakota",
+            "population": 844877,
+            "seats": {
+                "senate": 2,
+                "house": 1
+            }
+        },
+        {
+            "name": "alaska",
+            "population": 735132,
+            "seats": {
+                "senate": 2,
+                "house": 1
+            }
+        },
+        {
+            "name": "north dakota",
+            "population": 723393,
+            "seats": {
+                "senate": 2,
+                "house": 1
+            }
+        },
+        {
+            "name": "district of columbia",
+            "population": 646449,
+            "seats": {
+                "senate": 0,
+                "house": 0
+            }
+        },
+        {
+            "name": "vermont",
+            "population": 626630,
+            "seats": {
+                "senate": 2,
+                "house": 1
+            }
+        },
+        {
+            "name": "wyoming",
+            "population": 582658,
+            "seats": {
+                "senate": 2,
+                "house": 1
+            }
+        }
+    ]
+}
