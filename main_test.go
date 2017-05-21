@@ -11,6 +11,40 @@ type calculateSeatTestCase struct {
 	SeatLimit     int
 }
 
+type totalSeatTestCase struct {
+	expectedSeats int
+	Population    int
+	PeoplePerSeat int
+	StepSeatLimit int
+	SeatStep      int
+}
+
+func TestTotalSeats(t *testing.T) {
+	testCases := []totalSeatTestCase{
+		totalSeatTestCase{11, 100, 5, 5, 5},
+	}
+
+	for _, testCase := range testCases {
+		result := TotalSeats(
+			testCase.Population,
+			testCase.PeoplePerSeat,
+			testCase.StepSeatLimit,
+			testCase.SeatStep,
+		)
+
+		if testCase.expectedSeats != result {
+			t.Errorf(
+				"Results for total don't match, expected: %d, received: %d With population of %d, seatlimit of %d and people per seat %d",
+				testCase.expectedSeats,
+				result,
+				testCase.Population,
+				testCase.StepSeatLimit,
+				testCase.PeoplePerSeat,
+			)
+		}
+	}
+}
+
 func TestCalculateSeats(t *testing.T) {
 	testCases := []calculateSeatTestCase{
 		calculateSeatTestCase{10, 100, 10, 10},
