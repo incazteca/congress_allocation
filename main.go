@@ -40,23 +40,16 @@ func main() {
 	fmt.Printf("Total house seats by new method: %d \n", newSeats)
 }
 
-func OldCalculateSeats(totalPopulation int, peoplePerSeat int, seatLimit int) int {
+func TotalSeats(Population int, peoplePerSeat int, stepSeatLimit int, seatStep int) int {
 	seats := 0
-
-	for population := totalPopulation; population > peoplePerSeat; population -= peoplePerSeat {
-		seats++
-		if seats == seatLimit {
-			peoplePerSeat += 10000
-		}
-	}
 
 	return seats
 }
 
-func CalculateSeats(Population int, peoplePerSeat int, seatLimit int) int {
+func CalculateSeats(population int, peoplePerSeat int, seatLimit int) int {
 	seats := 0
 
-	for population := Population; population >= peoplePerSeat; population -= peoplePerSeat {
+	for working_population := population; working_population >= peoplePerSeat; working_population -= peoplePerSeat {
 		seats++
 
 		if seats >= seatLimit {
