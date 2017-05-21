@@ -32,9 +32,12 @@ func TestCalculateSeats(t *testing.T) {
 
 		if testCase.expectedSeats != result {
 			t.Errorf(
-				"Results don't match, expected: %d, received: %d",
+				"Results don't match, expected: %d, received: %d With population of %d, seatlimit of %d and people per seat %d",
 				testCase.expectedSeats,
 				result,
+				testCase.Population,
+				testCase.SeatLimit,
+				testCase.PeoplePerSeat,
 			)
 		}
 	}
