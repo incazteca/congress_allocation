@@ -22,6 +22,11 @@ type totalSeatTestCase struct {
 func TestTotalSeats(t *testing.T) {
 	testCases := []totalSeatTestCase{
 		totalSeatTestCase{11, 100, 5, 5, 5},
+		totalSeatTestCase{5, 100, 5, 5, 0},
+		totalSeatTestCase{20, 100, 5, 20, 0},
+		totalSeatTestCase{20, 100, 5, 20, 20},
+		totalSeatTestCase{6, 100, 5, 3, 20},
+		totalSeatTestCase{25, 100, 1, 5, 1},
 	}
 
 	for _, testCase := range testCases {
