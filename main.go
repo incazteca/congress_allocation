@@ -33,7 +33,7 @@ func main() {
 		totalHouseSeats += state.Seats["house"]
 	}
 
-	newSeats := CalculateSeats(totalPopulation, 40000, 100)
+	newSeats := TotalSeats(totalPopulation, 40000, 100, 10000)
 
 	fmt.Printf("Total population: %d \n", totalPopulation)
 	fmt.Printf("Total house seats: %d \n", totalHouseSeats)
@@ -44,10 +44,16 @@ func TotalSeats(population int, peoplePerSeat int, stepSeatLimit int, seatStep i
 	seats := 0
 	workingSeats := 0
 
-	for working_population := population; working_population >= peoplePerSeat; working_population -= (peoplePerSeat * workingSeats) {
+	for population >= peoplePerSeat {
 		workingSeats = CalculateSeats(population, peoplePerSeat, stepSeatLimit)
+		population -= (peoplePerSeat * workingSeats)
 		peoplePerSeat += seatStep
 		seats += workingSeats
+		workingSeats = 0
+
+		if stepSeatLimit == 0 {
+			break
+		}
 	}
 
 	return seats
@@ -56,12 +62,14 @@ func TotalSeats(population int, peoplePerSeat int, stepSeatLimit int, seatStep i
 func CalculateSeats(population int, peoplePerSeat int, seatLimit int) int {
 	seats := 0
 
-	for working_population := population; working_population >= peoplePerSeat; working_population -= peoplePerSeat {
+	for population >= peoplePerSeat {
 		seats++
 
 		if seats >= seatLimit {
 			break
 		}
+
+		population -= peoplePerSeat
 	}
 
 	return seats
