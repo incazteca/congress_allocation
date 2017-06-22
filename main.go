@@ -46,6 +46,7 @@ func TotalSeats(population int, peoplePerSeat int, stepSeatLimit int, seatStep i
 
 	for population >= peoplePerSeat {
 		workingSeats = CalculateSeats(population, peoplePerSeat, stepSeatLimit)
+
 		population -= (peoplePerSeat * workingSeats)
 		peoplePerSeat += seatStep
 		seats += workingSeats
