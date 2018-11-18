@@ -19,6 +19,11 @@ type totalSeatTestCase struct {
 	SeatStep      int
 }
 
+type formattedToIntTestCase struct {
+	input    string
+	expected int
+}
+
 func TestTotalSeats(t *testing.T) {
 	testCases := []totalSeatTestCase{
 		totalSeatTestCase{11, 100, 5, 5, 5},
@@ -80,5 +85,41 @@ func TestCalculateSeats(t *testing.T) {
 				testCase.PeoplePerSeat,
 			)
 		}
+	}
+}
+
+func TestformattedToInt(t *testing.T) {
+	testCases := []formattedToIntTestCase{
+		formattedToIntTestCase{"1", 1},
+		formattedToIntTestCase{"12", 12},
+		formattedToIntTestCase{"-12", -12},
+		formattedToIntTestCase{"0", 0},
+		formattedToIntTestCase{"1,000", 1000},
+		formattedToIntTestCase{"234,234", 234234},
+	}
+
+	for _, testCase := range testCases {
+		result := formattedToInt(testCase.input)
+		if testCase.expected != result {
+			t.Errorf("Expected %d, recieved: %d", testCase.expected, result)
+		}
+	}
+}
+
+func TestnewState(t *testing.T) {
+	record := []string{"", "", "Chicago", "2,700,000", "2,750,000", "-", "3"}
+	expectedState := State{
+		Name:             "Chicago",
+		PopulationCensus: 2700000,
+		PopulationEst:    2750000,
+		HouseSeats:       3,
+		SenateSeats:      2,
+		ElectoralVotes:   5,
+		CensusYear:       2010,
+	}
+	state := newState(record)
+
+	if expectedState != state {
+		t.Errorf("Expected %v, recieved %v", expectedState, state)
 	}
 }
