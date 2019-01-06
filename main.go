@@ -1,15 +1,11 @@
 package main
 
 import (
-	"encoding/csv"
 	"encoding/json"
 	"fmt"
-	"io"
+	"github.com/incazteca/congress_allocation/state"
 	"io/ioutil"
 	"log"
-	"os"
-	"strconv"
-	"strings"
 )
 
 // State has the relevant data for a state
@@ -24,12 +20,9 @@ type State struct {
 }
 
 const sourceFile = "data/us_population.csv"
-const currentHouseSeatTotal = 435
-const senateSeats = 2
-const censusYear = 2010
 
 func main() {
-	states := getStates()
+	states := state.GetStates(sourceFile)
 
 	var totalPopulation int
 	var totalHouseSeats int
@@ -58,64 +51,7 @@ func getStatesJSON() []State {
 	return states
 }
 
-func getStates() []State {
-	fh, err := os.Open(sourceFile)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	r := csv.NewReader(fh)
-	i := 0
-	var states []State
-
-	for {
-		record, err := r.Read()
-
-		if err == io.EOF {
-			break
-		}
-
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		if i == 0 || record[0] == "—" {
-			i++
-			continue
-		}
-
-		states = append(states, newState(record))
-	}
-
-	return states
-}
-
-func newState(record []string) State {
-	pop2017 := formattedToInt(record[3])
-	pop2010 := formattedToInt(record[4])
-	currentSeats := formattedToInt(record[6])
-
-	return State{
-		Name:             record[2],
-		PopulationCensus: pop2010,
-		PopulationEst:    pop2017,
-		HouseSeats:       currentSeats,
-		SenateSeats:      senateSeats,
-		ElectoralVotes:   currentSeats + senateSeats,
-		CensusYear:       censusYear,
-	}
-}
-
-func formattedToInt(number string) int {
-	commaReplace := strings.NewReplacer(",", "")
-	result, err := strconv.Atoi(commaReplace.Replace(number))
-
-	if err != nil {
-		log.Fatal(err)
-	}
-	return result
-}
-
+// TotalSeats Get the total seats
 func TotalSeats(population int, peoplePerSeat int, stepSeatLimit int, seatStep int) int {
 	seats := 0
 	workingSeats := 0
@@ -136,6 +72,7 @@ func TotalSeats(population int, peoplePerSeat int, stepSeatLimit int, seatStep i
 	return seats
 }
 
+// CalculateSeats Calculate seats by population
 func CalculateSeats(population int, peoplePerSeat int, seatLimit int) int {
 	seats := 0
 
