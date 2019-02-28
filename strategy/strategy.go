@@ -5,7 +5,7 @@ import (
 )
 
 type strategy interface {
-	CalculateSeats(states []state.State) strategyResult
+	Allocate(states []state.State) strategyResult
 }
 
 type strategyResult struct {
