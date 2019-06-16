@@ -5,6 +5,7 @@ import (
 	"io"
 	"log"
 	"os"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -71,6 +72,15 @@ func newState(record []string) State {
 		ElectoralVotes:   currentSeats + senateSeats,
 		CensusYear:       censusYear,
 	}
+}
+
+func sortOnEstimatedPopulation(states []State) []State {
+	copyStates := states[:]
+	sort.Slice(copyStates, func(i, j int) bool {
+		return copyStates[i].PopulationEst < copyStates[j].PopulationEst
+	})
+
+	return copyStates
 }
 
 func formattedToInt(number string) int {
