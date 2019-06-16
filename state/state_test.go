@@ -44,3 +44,20 @@ func TestFormattedToInt(t *testing.T) {
 		}
 	}
 }
+
+func TestSortOnEstimatedPopulation(t *testing.T) {
+	lowPopState := State{Name: "Low", PopulationEst: 30}
+	medPopState := State{Name: "Med", PopulationEst: 50}
+	highPopState := State{Name: "Med", PopulationEst: 100}
+
+	unorderedStates := []State{medPopState, lowPopState, highPopState}
+	expectedStates := []State{lowPopState, medPopState, highPopState}
+
+	actual := sortOnEstimatedPopulation(unorderedStates)
+
+	for i, expected := range expectedStates {
+		if expected != actual[i] {
+			t.Errorf("Expected +%v, received: +%v", expected, actual)
+		}
+	}
+}
