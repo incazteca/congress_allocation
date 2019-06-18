@@ -2,30 +2,50 @@ package strategy
 
 import (
 	"github.com/incazteca/congress_allocation/state"
-	"sort"
 )
 
 const strategyName = "Founder Amendment"
 const senateSeatsPerState = 2
 
 const initialPeoplePerSeat = 40000
-const seatStep = 100
-const AdditionalPeoplePerSeat = 10000
+const seatsPerStep = 100
+const additionalPeoplePerSeatPerStep = 10000
 
 // CalculateSeats calculate the seats for with the new strategy
 // based on estimated population
 func Allocate(states []state.State) strategyResult {
-	summary := newStrategySummary(states)
-
-	sort.Slice(states, func(i, j int) bool {
-		return states[i].PopulationEst < states[j].PopulationEst
-	})
+	orderedStates := state.SortOnEstimatedPopulation(states)
+	totalPop := totalEstimatedPopulation(states)
+	availableSeats := seatsToAllocate(totalPop)
+	allocatedStates := allocatePerState(availableSeats, orderedStates)
 
 	return strategyResult{
 		Name:    strategyName,
-		States:  states, // Actually work allocations here
-		Summary: summary,
+		States:  allocatedStates, // Actually work allocations here
+		Summary: newStrategySummary(allocatedStates),
 	}
+}
+
+func totalEstimatedPopulation(states []state.State) int {
+	var population int
+
+	for _, st := range states {
+		population += st.PopulationEst
+	}
+
+	return population
+}
+
+func seatsToAllocate(population int) int {
+	return TotalSeats(
+		population, initialPeoplePerSeat, seatsPerStep, additionalPeoplePerSeatPerStep,
+	)
+}
+
+func allocatePerState(seatsAvailable int, states []state.State) []state.State {
+	var allocatedStates []state.State
+
+	return allocatedStates
 }
 
 func newStrategySummary(states []state.State) strategySummary {
@@ -52,4 +72,42 @@ func newStrategySummary(states []state.State) strategySummary {
 
 func calculateHouseSeatsForState(currentState state.State) int {
 	return len(currentState.Name)
+}
+
+// TotalSeats Get the total seats
+func TotalSeats(population int, peoplePerSeat int, stepSeatLimit int, seatStep int) int {
+	seats := 0
+	workingSeats := 0
+
+	for population >= peoplePerSeat {
+		workingSeats = CalculateSeats(population, peoplePerSeat, stepSeatLimit)
+
+		population -= (peoplePerSeat * workingSeats)
+		peoplePerSeat += seatStep
+		seats += workingSeats
+		workingSeats = 0
+
+		if stepSeatLimit == 0 {
+			break
+		}
+	}
+
+	return seats
+}
+
+// CalculateSeats Calculate seats by population
+func CalculateSeats(population int, peoplePerSeat int, seatLimit int) int {
+	seats := 0
+
+	for population >= peoplePerSeat {
+		seats++
+
+		if seats >= seatLimit {
+			break
+		}
+
+		population -= peoplePerSeat
+	}
+
+	return seats
 }
