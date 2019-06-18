@@ -58,6 +58,15 @@ func GetStates(sourceFile string) []State {
 	return states
 }
 
+func SortOnEstimatedPopulation(states []State) []State {
+	copyStates := states[:]
+	sort.Slice(copyStates, func(i, j int) bool {
+		return copyStates[i].PopulationEst < copyStates[j].PopulationEst
+	})
+
+	return copyStates
+}
+
 func newState(record []string) State {
 	pop2017 := formattedToInt(record[3])
 	pop2010 := formattedToInt(record[4])
@@ -72,15 +81,6 @@ func newState(record []string) State {
 		ElectoralVotes:   currentSeats + senateSeats,
 		CensusYear:       censusYear,
 	}
-}
-
-func sortOnEstimatedPopulation(states []State) []State {
-	copyStates := states[:]
-	sort.Slice(copyStates, func(i, j int) bool {
-		return copyStates[i].PopulationEst < copyStates[j].PopulationEst
-	})
-
-	return copyStates
 }
 
 func formattedToInt(number string) int {
