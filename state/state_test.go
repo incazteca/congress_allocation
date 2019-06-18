@@ -53,7 +53,7 @@ func TestSortOnEstimatedPopulation(t *testing.T) {
 	unorderedStates := []State{medPopState, lowPopState, highPopState}
 	expectedStates := []State{lowPopState, medPopState, highPopState}
 
-	actual := sortOnEstimatedPopulation(unorderedStates)
+	actual := SortOnEstimatedPopulation(unorderedStates)
 
 	for i, expected := range expectedStates {
 		if expected != actual[i] {
