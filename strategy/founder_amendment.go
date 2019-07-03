@@ -97,7 +97,11 @@ func TotalSeats(population int, peoplePerSeat int, stepSeatLimit int, seatStep i
 
 // CalculateSeats Calculate seats by population
 func CalculateSeats(population int, peoplePerSeat int, seatLimit int) int {
-	seats := 0
+	if population == 0 {
+		return 0
+	}
+
+	seats := 1
 
 	for population >= peoplePerSeat {
 		seats++
