@@ -19,6 +19,7 @@ type totalSeatTestCase struct {
 	SeatStep      int
 }
 
+/*
 func TestTotalSeats(t *testing.T) {
 	testCases := []totalSeatTestCase{
 		totalSeatTestCase{13, 100, 5, 5, 5},
@@ -50,6 +51,7 @@ func TestTotalSeats(t *testing.T) {
 		}
 	}
 }
+*/
 
 func TestCalculateSeats(t *testing.T) {
 	testCases := []calculateSeatTestCase{
@@ -84,11 +86,11 @@ func TestCalculateSeats(t *testing.T) {
 	}
 }
 
-func TestSeatsToAllocate(t *testing.T) {
-	// test input and expected result
+func TestSeatsAvailableToAllocate(t *testing.T) {
+	// Each case is input, followed by expected output
 	testCases := [][]int{
 		{0, 0},
-		{100, 1},
+		{1, 1},
 		{39999, 1},
 		{40000, 1},
 		{40001, 2},
@@ -104,7 +106,7 @@ func TestSeatsToAllocate(t *testing.T) {
 		population := testCase[0]
 		expectation := testCase[1]
 
-		result := seatsToAllocate(population)
+		result := SeatsAvailableToAllocate(population)
 
 		if expectation != result {
 			t.Errorf(
