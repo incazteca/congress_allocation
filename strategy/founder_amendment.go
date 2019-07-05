@@ -16,7 +16,7 @@ const additionalPeoplePerSeatPerStep = 10000
 func Allocate(states []state.State) strategyResult {
 	orderedStates := state.SortOnEstimatedPopulation(states)
 	totalPop := totalEstimatedPopulation(states)
-	availableSeats := seatsToAllocate(totalPop)
+	availableSeats := SeatsAvailableToAllocate(totalPop)
 	allocatedStates := allocatePerState(availableSeats, orderedStates)
 
 	return strategyResult{
@@ -36,10 +36,27 @@ func totalEstimatedPopulation(states []state.State) int {
 	return population
 }
 
-func seatsToAllocate(population int) int {
-	return TotalSeats(
-		population, initialPeoplePerSeat, seatsPerStep, additionalPeoplePerSeatPerStep,
-	)
+// SeatsAvailableToAllocate Calculates seats available to allocate based on population
+func SeatsAvailableToAllocate(population int) int {
+	if population == 0 {
+		return 0
+	}
+
+	step := 0
+	seats := 0
+	workingPop := population
+	var popPerSeat int
+
+	for workingPop > 0 {
+		if seats != 0 && seats%100 == 0 {
+			step++
+		}
+		popPerSeat = initialPeoplePerSeat + (additionalPeoplePerSeatPerStep * step)
+		workingPop -= popPerSeat
+		seats++
+	}
+
+	return seats
 }
 
 func allocatePerState(seatsAvailable int, states []state.State) []state.State {
