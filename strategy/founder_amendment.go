@@ -11,8 +11,8 @@ const initialPeoplePerSeat = 40000
 const seatsPerStep = 100
 const additionalPeoplePerSeatPerStep = 10000
 
-// CalculateSeats calculate the seats for with the new strategy
-// based on estimated population
+// Allocate calculates the seats for the new strategy and allocates them to the
+// states provided
 func Allocate(states []state.State) strategyResult {
 	orderedStates := state.SortOnEstimatedPopulation(states)
 	totalPop := totalEstimatedPopulation(states)
@@ -89,46 +89,4 @@ func newStrategySummary(states []state.State) strategySummary {
 
 func calculateHouseSeatsForState(currentState state.State) int {
 	return len(currentState.Name)
-}
-
-// TotalSeats Get the total seats
-func TotalSeats(population int, peoplePerSeat int, stepSeatLimit int, seatStep int) int {
-	seats := 0
-	workingSeats := 0
-
-	for population >= peoplePerSeat {
-		workingSeats = CalculateSeats(population, peoplePerSeat, stepSeatLimit)
-
-		population -= (peoplePerSeat * workingSeats)
-		peoplePerSeat += seatStep
-		seats += workingSeats
-		workingSeats = 0
-
-		if stepSeatLimit == 0 {
-			break
-		}
-	}
-
-	return seats
-}
-
-// CalculateSeats Calculate seats by population
-func CalculateSeats(population int, peoplePerSeat int, seatLimit int) int {
-	if population == 0 {
-		return 0
-	}
-
-	seats := 1
-
-	for population >= peoplePerSeat {
-		seats++
-
-		if seats >= seatLimit {
-			break
-		}
-
-		population -= peoplePerSeat
-	}
-
-	return seats
 }
